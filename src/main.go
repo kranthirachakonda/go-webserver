@@ -3,6 +3,8 @@ package main
 import (
 	"errors"
 	"fmt"
+	"net/http"
+	"webservice/controllers"
 )
 
 func main() {
@@ -14,7 +16,10 @@ func main() {
 
 func startWebServer(port int, numberOfRetries int) (int, error) {
 	fmt.Println("Starting server...")
-	// do important things
+
+	controllers.RegisterControllers()
+	http.ListenAndServe(":3000", nil)
+
 	fmt.Println("Server started  on port", port)
 	fmt.Println("Number of retries", numberOfRetries)
 
