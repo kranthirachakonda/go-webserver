@@ -1,16 +1,22 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-	"webservice/models"
 )
 
 func main() {
-	u := models.User{
-		ID:        2,
-		FirstName: "Tricia",
-		LastName:  "McMillan",
-	}
+	fmt.Println("Hello Gophers!")
+	port := 3000
+	_, err := startWebServer(port, 2)
+	fmt.Println(err)
+}
 
-	fmt.Println(u)
+func startWebServer(port int, numberOfRetries int) (int, error) {
+	fmt.Println("Starting server...")
+	// do important things
+	fmt.Println("Server started  on port", port)
+	fmt.Println("Number of retries", numberOfRetries)
+
+	return port, errors.New("Something went wrong")
 }
